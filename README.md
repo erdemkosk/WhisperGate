@@ -9,6 +9,10 @@
 > [!IMPORTANT]
 > **No Internet, No WiFi, No Bluetooth, No Cables.** Just raw acoustic waves transmitting data through the air.
 
+> [!WARNING]
+> **Disclaimer:**
+> This project is currently in an alpha stage and is intended for demonstration and testing purposes only. Due to differences in hardware, audio devices, operating systems, microphone quality, and noise filtering technologies, some computers may not produce certain frequencies correctly, while others may not detect them at all. Results may vary significantly between devices and environments. We do not guarantee consistent functionality, accuracy, or compatibility across all systems. This project is provided as-is for demonstration purposes only.
+
 ---
 
 ## 🛠️ How It Works (The Big Picture)
