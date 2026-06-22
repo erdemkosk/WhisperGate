@@ -79,26 +79,24 @@ jobs:
         with:
           msystem: MINGW64
           update: true
+          path-type: inherit
           install: >-
             mingw-w64-x86_64-portaudio
             mingw-w64-x86_64-gcc
             mingw-w64-x86_64-pkg-config
 
-      - name: Add MinGW64 to Path
-        run: |
-          echo "C:\msys64\mingw64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-
       - name: Build Binary
+        shell: msys2 {0}
         run: |
           go build -v -o whispergate-windows-amd64.exe
-          cp C:\msys64\mingw64\bin\libportaudio*.dll .
-          cp C:\msys64\mingw64\bin\libwinpthread*.dll .
-          cp C:\msys64\mingw64\bin\libgcc_s*.dll .
-          cp C:\msys64\mingw64\bin\libstdc++*.dll .
+          cp /mingw64/bin/libportaudio.dll .
+          cp /mingw64/bin/libwinpthread-1.dll .
+          cp /mingw64/bin/libgcc_s_seh-1.dll .
+          cp /mingw64/bin/libstdc++-6.dll .
 
       - name: Create Zip Archive
         run: |
-          Get-ChildItem -Path whispergate-windows-amd64.exe, libportaudio*.dll, libwinpthread*.dll, libgcc_s*.dll, libstdc++*.dll | Compress-Archive -DestinationPath whispergate-windows-amd64.zip
+          Compress-Archive -Path whispergate-windows-amd64.exe, libportaudio.dll, libwinpthread-1.dll, libgcc_s_seh-1.dll, libstdc++-6.dll -DestinationPath whispergate-windows-amd64.zip
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
