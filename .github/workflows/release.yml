@@ -84,12 +84,19 @@ jobs:
         shell: msys2 {0}
         run: |
           go build -v -o whispergate-windows-amd64.exe
+          cp /mingw64/bin/libportaudio-2.dll .
+          cp /mingw64/bin/libwinpthread-1.dll .
+          cp /mingw64/bin/libgcc_s_seh-1.dll .
+
+      - name: Create Zip Archive
+        run: |
+          Compress-Archive -Path whispergate-windows-amd64.exe, libportaudio-2.dll, libwinpthread-1.dll, libgcc_s_seh-1.dll -DestinationPath whispergate-windows-amd64.zip
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: whispergate-windows-amd64
-          path: whispergate-windows-amd64.exe
+          path: whispergate-windows-amd64.zip
 
   publish-release:
     name: Publish Rolling Release
@@ -124,4 +131,4 @@ jobs:
           files: |
             whispergate-linux-amd64
             whispergate-darwin-arm64
-            whispergate-windows-amd64.exe
+            whispergate-windows-amd64.zip
