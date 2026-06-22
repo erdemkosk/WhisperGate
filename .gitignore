@@ -1,0 +1,21 @@
+# Compiled binaries
+acoustic-vault
+acoustic-vault.exe
+whispergate
+whispergate.exe
+
+# Testing files
+*.test
+*.out
+test_temp.wav
+transfer.wav
+*.wav
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
