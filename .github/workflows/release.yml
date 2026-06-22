@@ -78,6 +78,7 @@ jobs:
             mingw-w64-x86_64-portaudio
             mingw-w64-x86_64-gcc
             mingw-w64-x86_64-go
+            mingw-w64-x86_64-pkg-config
 
       - name: Build Binary
         shell: msys2 {0}
